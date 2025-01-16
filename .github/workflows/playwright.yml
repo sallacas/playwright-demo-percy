@@ -19,6 +19,12 @@ jobs:
       run: pnpm exec playwright install --with-deps
     - name: Run Playwright tests
       run: pnpm exec playwright test
+      env: 
+        PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+        DEMO_URL: ${{ secrets.DEMO_URL }}
+        PERCY_PAGE_LOAD_TIMEOUT: 60000
+        CORRECT_USER: ${{ secrets.CORRECT_USER }}
+        CORRECT_PASSWORD: ${{ secrets.CORRECT_PASSWORD }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
