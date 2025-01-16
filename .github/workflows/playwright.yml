@@ -17,8 +17,8 @@ jobs:
       run: npm install -g pnpm && pnpm install
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
-    - name: Run Playwright tests
-      run: pnpm exec playwright test
+    - name: Run Playwright/Percy tests
+      run: pnpm exec percy exec -- pnpm exec playwright test --grep "@percy"
       env: 
         PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
         DEMO_URL: ${{ secrets.DEMO_URL }}
